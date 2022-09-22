@@ -1,6 +1,6 @@
 public class Input {
 
-    private static final String VALID_CHARACTERS = "0123456789_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String VALID_CHARACTERS = ".0123456789_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 
     public static boolean check(String login, String password, String confirmPassword) {
@@ -21,12 +21,11 @@ public class Input {
         if (password == null || password.length() >= 20) {
             throw new WrongPasswordException("Длина пароля должна быть меньше 20 символов");
         }
-        if (confirmPassword == null || confirmPassword.length() >= 20) {
+        if (!password.equals(confirmPassword)) {
             throw new WrongPasswordException("Пароли должны совпадать");
         }
         validateCharacters(true, login);
         validateCharacters(false, password);
-
     }
 
     private static void validateCharacters(boolean isLogin, String s) throws WrongLoginException, WrongPasswordException {
@@ -36,9 +35,7 @@ public class Input {
                     throw new WrongLoginException("В логине не верные данные " +s.charAt(i));
                 }else {
                     throw new WrongPasswordException("В пароле не верные данные " + s.charAt(i));}
-
             }
-            
         }
     }
 }

@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        boolean result = Input.check("VS_1993", "123_Kat", "123_Kat");
+        boolean result = Input.check("java_skypro.go", "D_1hWiKjjP_9", "D_1hWiKjjP_9");
         if (result) {
             System.out.println("Логин и пароль верны");
         } else {
